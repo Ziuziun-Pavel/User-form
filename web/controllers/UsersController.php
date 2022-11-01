@@ -20,11 +20,10 @@ class UsersController extends Controller {
     }
 
     public function deleteUser() {
-
         if(!empty($_GET) && !empty($_GET['id'])) {
             $userId = $_GET['id'];
+            header('Location: http://localhost/form-users/web/users');
             if($this->model->deleteUser($userId)) {
-                header('Location: http://localhost/form-users/web/users');
                 echo json_encode(array("success" => true, "text" => "Пользователь удален"));
             } else{
                 echo json_encode(array("success" => false, "text" => "Ошибка удаления"));

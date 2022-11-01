@@ -43,8 +43,8 @@
                         </thead>
                         <tbody>
                         <?php foreach ($pageData['users'] as $key => $value) {
-                            $buttonDelete = '<a href="'.'http://localhost/form-users/web/users/deleteUser/?id='. $value['id'].'"><button type="button" class="btn btn-danger" onclick="deleteUser('. $value['id'] . ')">Delete</button></a>';
-                            $buttonEdit = '<button type="button" class="btn btn-primary">Edit</button>';
+                            $buttonDelete = '<button type="button" class="btn btn-danger" onclick="deleteUser('. $value['id'] . ')">Delete</button>';
+                            $buttonEdit = '<button type="button" class="btn btn-primary" onclick="editUser('. $value['id'] . ')">Edit</button>';
 
                             echo "<tr>";
                             echo "<td>" . $value['id'] . "</td>";
@@ -64,7 +64,11 @@
     </div>
 </div>
 
-
+<div class="modal hidden">
+    <h4>Вы хотите удалить это задание?</h4>
+    <button class="cancel">Отмена</button>
+    <button class="confirm">Удалить</button>
+</div>
 
 <script src="js/script.js"></script>
 <script src="js/users.js"></script>

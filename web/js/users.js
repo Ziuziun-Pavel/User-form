@@ -17,30 +17,24 @@ function submitForm(e) {
 }
 
 function deleteUser(id) {
-    // var xhr = new XMLHttpRequest();
-    //
-    // var dataString = 'id1=' + id ;
-    //
-    // xhr.open("POST", 'http://localhost/form-users/web/users/deleteUser', true);
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    //
-    // xhr.send(dataString);
-    console.log(1);
-    fetch("http://localhost/form-users/web/users/deleteUser", {
-        method: "post",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
+    if(confirm('You are sure?')) {
+        fetch("http://localhost/form-users/web/users/deleteUser", {
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
 
-        //make sure to serialize your JSON body
-        body: JSON.stringify({
-            id: id
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                id: id
+            })
         })
-    })
-        .then( (response) => {
-            window.location = 'http://localhost/form-users/web/users/deleteUser';
-        });
+            .then( (response) => {
+                window.location = `http://localhost/form-users/web/users/deleteUser/?id=${id}`;
+            });
+    }
+
 }
 
 

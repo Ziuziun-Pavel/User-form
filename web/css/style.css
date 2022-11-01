@@ -46,3 +46,15 @@ label {
     margin-right: 10px;
 }
 
+.modal {
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    padding: 32px;
+}
+
+.hidden {
+    display: none;
+}
+
