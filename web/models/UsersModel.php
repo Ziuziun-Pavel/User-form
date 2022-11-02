@@ -20,6 +20,17 @@ class UsersModel extends Model {
         $stmt->execute();
         return true;
     }
+    public function getUSerById($id) {
+        $result = array();
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+
 
 
 }

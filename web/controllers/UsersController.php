@@ -3,6 +3,8 @@
 class UsersController extends Controller {
 
     private $pageTpl = "/views/users.tpl.php";
+    private $page1Tpl = "/views/main.tpl.php";
+
 
     public function __construct() {
         parent::__construct();
@@ -33,5 +35,33 @@ class UsersController extends Controller {
             echo json_encode(array("success" => false, "text" => "Произошла ошибка при удалении"));
         }
     }
+
+    public function getUser() {
+        if(!isset($_GET['id'])) {
+            echo json_encode(array("success" => false));
+        } else {
+            $productId = $_GET['id'];
+            $productInfo = json_encode($this->model->getUserById($productId));
+            echo $productInfo;
+        }
+    }
+
+    public function editUser() {
+        $this->pageData['title'] = 'Edit User';
+        $this->pageData['form-title'] = "Edit user";
+        $this->pageData['btn-title'] = "Edit";
+        $this->pageData['name'] = "Edit";
+
+        $userId = $_GET['id'];
+        $user = $this->model->getUserById($userId);
+
+
+        $this->pageData['user'] = $user;
+
+
+        $this->view->render($this->page1Tpl, $this->pageData);
+
+    }
+
 
 }

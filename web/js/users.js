@@ -10,7 +10,7 @@ function submitForm(e) {
     var dataString = 'name1=' + name + '&email1=' + email + '&gender1=' + gender + '&status1=' + status;
 
 
-    xhr.open("POST", 'http://localhost/form-users/web/index/addNewUser', true);
+    xhr.open("POST", 'http://localhost/form-users/web/', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.send(dataString);
@@ -37,4 +37,8 @@ function deleteUser(id) {
 
 }
 
+function editUser(id) {
+    console.log(id);
+    window.location = `http://localhost/form-users/web/users/editUser/?id=${id}`;
+}
 
