@@ -1,4 +1,4 @@
-function submitForm(e) {
+function addUser(e) {
     e.preventDefault()
     var xhr = new XMLHttpRequest();
 
@@ -6,7 +6,6 @@ function submitForm(e) {
     var email = document.getElementById("form_email").value;
     var gender = document.getElementById("form_gender").value;
     var status = document.getElementById("form_status").value;
-
     var dataString = 'name1=' + name + '&email1=' + email + '&gender1=' + gender + '&status1=' + status;
 
 
@@ -25,7 +24,6 @@ function deleteUser(id) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
 
-            //make sure to serialize your JSON body
             body: JSON.stringify({
                 id: id
             })
@@ -37,8 +35,32 @@ function deleteUser(id) {
 
 }
 
-function editUser(id) {
-    console.log(id);
-    window.location = `http://localhost/form-users/web/users/editUser/?id=${id}`;
+function editPage(id) {
+    window.location = `http://localhost/form-users/web/users/editPage/?id=${id}`;
 }
 
+function submitEditUser(e) {
+    var name = document.getElementById("form_name").value;
+    var email = document.getElementById("form_email").value;
+    var gender = document.getElementById("form_gender").value;
+    var status = document.getElementById("form_status").value;
+
+    fetch(`http://localhost/form-users/web/users/updateUserData`, {
+        method: "post",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            status: status,
+            gender: gender,
+        })
+    })
+        .then( (response) => {
+            window.location = `http://localhost/form-users/web/users/updateUserData`;
+        });
+
+}

@@ -42,13 +42,34 @@
                     <div class="card-body bg-light">
 
                         <div class = "container">
-                            <form id="contact-form"
-                                  role="form"
-                                  class="needs-validation"
-                                  method="post"
-                                  action="http://localhost/form-users/web/index/addNewUser"
-                                  onsubmit="submitForm(e)"
-                                  novalidate>
+                            <?php if (!empty($pageData['user'])) {
+                                foreach ($pageData['user'] as $key => $value) {
+                                    if($key == 'id' && $pageData['btn-title'] == 'Edit') {
+                                        echo "
+                                        <form id='contact-form'
+                                        role='form'
+                                        class='needs-validation'
+                                        method='post'
+                                        action='http://localhost/form-users/web/users/updateUserData/?id=$value'
+                                        onsubmit='submitEditUser(e, id)'
+                                        novalidate>
+                                        ";
+                                    }
+                                }
+                            } else {
+                                echo "
+                                        <form id='contact-form'
+                                        role='form'
+                                        class='needs-validation'
+                                        method='post'
+                                        action='http://localhost/form-users/web/index/addNewUser'
+                                        onsubmit='addUser(e)'
+                                        novalidate>
+                                        ";
+
+                            }
+                            ?>
+
 
                                 <div class="controls">
 
@@ -205,9 +226,6 @@
 
         </div>
     </div>
-
-    <footer>
-    </footer>
 
     <script src="js/script.js"></script>
     <script src="js/users.js"></script>

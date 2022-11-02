@@ -9,13 +9,20 @@ class DB{
     const DB = "user_form";
 
     public static function connectToDB() {
+        $errorMessage = "Can not connect to DB";
+
         $user = self::USER;
         $pass = self::PASS;
         $host = self::HOST;
         $db = self::DB;
 
         $connect = new PDO("mysql:dbname=$db;host=$host", $user, $pass);
-        return $connect;
+        if (!$connect)
+            die($errorMessage);
+        else {
+            return $connect;
+        }
 
     }
+
 }

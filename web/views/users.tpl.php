@@ -44,7 +44,7 @@
                         <tbody>
                         <?php foreach ($pageData['users'] as $key => $value) {
                             $buttonDelete = '<button type="button" class="btn btn-danger" onclick="deleteUser('. $value['id'] . ')">Delete</button>';
-                            $buttonEdit = '<button type="button" class="btn btn-primary" onclick="editUser('. $value['id'] . ')">Edit</button>';
+                            $buttonEdit = '<button type="button" class="btn btn-primary" onclick="editPage('. $value['id'] . ')">Edit</button>';
 
                             echo "<tr>";
                             echo "<td>" . $value['id'] . "</td>";

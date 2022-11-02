@@ -20,6 +20,7 @@ class UsersModel extends Model {
         $stmt->execute();
         return true;
     }
+
     public function getUSerById($id) {
         $result = array();
         $sql = "SELECT * FROM users WHERE id = :id";
@@ -30,6 +31,20 @@ class UsersModel extends Model {
         return $result;
     }
 
+    public function updateUserInfo($userId, $userFullName, $userGender, $userEmail, $userStatus) {
+        $sql = "UPDATE users
+                SET gender = :gender, fullName = :fullName, email = :email, status = :status
+                WHERE id = :id    
+                ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":gender", $userGender, PDO::PARAM_STR);
+        $stmt->bindValue(":fullName", $userFullName, PDO::PARAM_STR);
+        $stmt->bindValue(":email", $userEmail, PDO::PARAM_STR);
+        $stmt->bindValue(":status", $userStatus, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    }
 
 
 

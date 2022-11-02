@@ -4,7 +4,6 @@
 Routing class
  **/
 
-
 class Routing {
 
     public static function buildRoute() {
@@ -35,10 +34,6 @@ class Routing {
 
         $controller = new $controllerName();
         $controller->$action(); // $controller->index()
-
-    }
-
-    public function errorPage() {
 
     }
 
